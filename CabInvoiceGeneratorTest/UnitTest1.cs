@@ -1,16 +1,21 @@
+using CabInvoiceGeneratorProblem;
+
 namespace CabInvoiceGeneratorTest
 {
     public class Tests
     {
+        private CabInvoiceGenerator cabInvoiceGenerator;
         [SetUp]
         public void Setup()
         {
+            this.cabInvoiceGenerator = new CabInvoiceGenerator();
         }
 
         [Test]
-        public void Test1()
+        public void GivenDistanceAndTime_WhenProper_ShouldReturn_TotalFare()
         {
-            Assert.Pass();
+            double totalFare = this.cabInvoiceGenerator.CalculateFare(3.0, 5.0);
+            Assert.AreEqual(35.0, totalFare);
         }
     }
 }
