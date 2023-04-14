@@ -33,5 +33,13 @@ namespace CabInvoiceGeneratorTest
             InvoiceSummary summary = repository.GetInvoiceSummary("anil");
             Assert.AreEqual(summary.totalFare, 60.0);
         }
+        [Test]
+        public void GivenRideOption_WhenProper_ShouldReturn_InvoiceSummary()
+        {
+            RideOption option = new RideOption();
+            RideOption result = option.SetRideValues(RideOption.RideTypes.PREMIUM);
+            double fare = this.cabInvoiceGenerator.CalculateFare(result.costPerKm, result.costPerMinute, result.minimumFare, 3.0, 5.0);
+            Assert.AreEqual(fare, 55.0);
+        }
     }
 }
